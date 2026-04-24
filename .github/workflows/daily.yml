@@ -2,7 +2,7 @@ name: TAF Routine
 
 on:
   schedule:
-    - cron: "45 16 * * *"   # 18:45 Italia
+    - cron: "0 17 * * *"   # 19:00 Italia (UTC 17:00)
   workflow_dispatch:
 
 jobs:
@@ -10,13 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Run script
         env:
