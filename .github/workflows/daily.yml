@@ -2,7 +2,7 @@ name: TAF Routine
 
 on:
   schedule:
-    - cron: "0 17 * * *"   # 19:00 Italia (UTC 17:00)
+    - cron: "05 17 * * *"   # 19:05 Italia (UTC 17:00)
   workflow_dispatch:
 
 jobs:
